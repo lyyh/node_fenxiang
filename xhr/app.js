@@ -11,15 +11,15 @@ var handlersEvent = {
 		})
 	},
 	postEvent: function(req,res){
-	var postData = '';
-	req.on('data',function(chunk){
-		postData += chunk;
-	})
+		var postData = '';
+		req.on('data',function(chunk){
+			postData += chunk;
+		})
 
-	req.on('end',function(){
-		console.log(postData)
-		res.end(postData);
-	})
+		req.on('end',function(){
+			console.log(postData)
+			res.end(postData);
+		})
 	}
 }
 var onRequest = function(req,res){

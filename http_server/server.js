@@ -7,8 +7,8 @@ var http = require('http'),
 //向createServer 方法传递了一个函数，无论何时收到请求，函数都会被调用，可以理解为一个处理请求的地方
 //回调:我们给某个方法传递了一个函数，这个方法在有相应事件发生时调用这个函数来进行。即收到一个请求时就会被调用
 function onRequest(req,res){
-	var callbackName = querystring.parse(url.parse(req.url).query).callback;
-	// var callbackName = url.parse(req.url,true).query.callback;
+	// var callbackName = querystring.parse(url.parse(req.url).query).callback;
+	var callbackName = url.parse(req.url,true).query.callback;
 	res.write(callbackName + "({\"name\":\"lyh\"})");
 	res.end();
 }

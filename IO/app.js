@@ -1,3 +1,4 @@
+//异步IO
 var fs = require('fs');
 fs.readFile('data.json',function(err,ctx){
 	console.log(ctx.toString());
