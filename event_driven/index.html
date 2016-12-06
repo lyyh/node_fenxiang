@@ -16,13 +16,16 @@
 </head>
 <body>
     <script>
+    // $.post('http://localhost:8001', {param1: 'value1'}, function(data, textStatus, xhr) {
+    // 	console.log(data)
+    // });
     	$.ajax({
     		url: 'http://localhost:8001',
-    		type: 'post',
-    		dataType: 'json',
-    		data: {name: 'liuyanhao'},
+    		type: 'get',
+    		dataType: 'jsonp',
+    		data: {hello:123}
     	})
-    	.done(function(data) {
+    	.success(function() {
     		console.log("success");
     	})
     	.fail(function() {
@@ -31,7 +34,21 @@
     	.always(function() {
     		console.log("complete");
     	});
+
     	
+    	// ajax原生方式提交
+    	var xhr = new XMLHttpRequest();
+    	xhr.open('post','http://localhost:8001',true);
+    	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    	xhr.send('hello=123&name=312');
+
+    	var handlerResponse = function(){
+    		if(xhr.readyState == 4 && xhr.status == 200){
+    			console.log(xhr.responseText)
+    			// document.getElementById('box').innerHTML = xhr.responseText;
+    		}
+    	}
+    	xhr.onreadystatechange = handlerResponse;
     </script>
 </body>
 </html>
