@@ -15,8 +15,9 @@ http.createServer(function(req,res){
 	})
 	//侦听请求的end事件
 	req.on('end',function(){
-		console.log(postData)
-		res.end(postData)
+		console.log(postData);
+		res.write(postData);
+		res.end();
 		// res.end(callbackName+"("+ postData+")");
 	})
 }).listen(8001)
